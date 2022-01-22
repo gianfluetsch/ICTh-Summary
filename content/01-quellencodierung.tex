@@ -1,0 +1,265 @@
+%! Licence = CC BY-NC-SA 4.0
+
+%! Author = gianfluetsch
+%! Date = 22. Jan 2022
+%! Project = icth_summary
+
+\section{Quellencodierung}
+
+\subsection{Kompression/ Komprimierung}
+
+\subsubsection{Nachprüfung HS2020}
+\begin{center}
+    \centering
+    \begin{tabular}{l | l}
+        \bfseries{Zeichen} & \bfseries{Wahrscheinlichkeit p(x)}\\ \hline
+        a & 0.4\\ 
+        b & 0.3\\
+        c & 0.2\\
+        d & 0.1\\
+    \end{tabular}
+\end{center}
+
+\paragraph{Entropie der Quelle}\mbox{}\\
+$I(x) = log_{2}(\frac{1}{p(x)})$\\
+$H(x) = p(x)*I(x)$\\
+$H(x) = 0.4*log_2\frac{1}{0.4}+0.3*log_2\frac{1}{0.3}+0.2*log_2\frac{1}{0.2}+0.1*log_2\frac{1}{0.1}=1.846$
+
+\paragraph{Redundanz der Quelle}\mbox{}\\
+$H_0 = log_2(N) = log_2(4) = 2 \rightarrow$ (N = Anzahl Zeichen)\\
+$R_0 = H_0 - H(x) = 2-1.846=0.153$
+
+\paragraph{Redundanz des Codes mit Codierung}
+\begin{center}
+    \centering
+    \begin{tabular}{l | l}
+        \bfseries{Zeichen} & \bfseries{Codierung}\\ \hline
+        a & 001\\ 
+        b & 010\\
+        c & 011\\
+        d & 100\\
+    \end{tabular}
+\end{center}
+$L = p*L \rightarrow p_1*L_1+p_2*L_2...$\\
+$R_c = L - H(x) \rightarrow$ L=Anzahl Bits (3)\\
+$3-1.846=1.154$
+
+\paragraph{Huffman-Code erstellen (Codierung)}\mbox{}\\
+\begin{center}
+    \centering
+    \begin{tabular}{l | l}
+        \bfseries{Zeichen} & \bfseries{Codierung}\\ \hline
+        a & 1\\ 
+        b & 01\\
+        c & 001\\
+        d & 000\\
+    \end{tabular}
+\end{center}
+
+\paragraph{Redundanz Huffman-Code}\mbox{}\\
+$L=0.4*1+0.3*2+0.2*3+0.1*3=1.9$\\
+$R_c = L-H(x) = 1.9-1.846=0.054$
+
+\paragraph{Codieren sie ''aaabbacd'' mit Huffman-Code}\mbox{}\\
+$a\_a\_a\_\_b\_\_b\_\_\_a\_\_c\_\_d$\\
+$1\_1\_1\_|\_01\_01\_|\_1\_001\_000 \rightarrow 14 Bits$
+
+\paragraph{Lauflängencodierung der Bitfolge}\mbox{}\\
+Orginale Bitfolge: $11101011001000 \rightarrow |w_c| = 14 bit$\\
+Code: $3$ $1$ $1$ $1$ $2$ $2$ $1$ $3 \rightarrow$ mit 2 Bits kann Code codiert werden\\
+Bitfolge komprimiert: $11$ $01$ $01$ $01$ $10$ $10$ $01$ $11$\\
+$\rightarrow |w_c| = 16 bit$
+
+\paragraph{Kompression im Vergleich}\mbox{}\\
+Ursprünglich: $8\_Zeichen * 3\_Bit = 24 Bit$\\
+Huffman: $14 Bit$\\
+$\rightarrow 14Bit/24Bit=0.5833=58\%$
+
+\paragraph{Min. theoretische Redundanz Huffman}\mbox{}\\
+???
+
+\paragraph{Wann wird das erreicht?}\mbox{}\\
+???
+
+\subsubsection{Prüfung FS2017}
+\begin{center}
+    \centering
+    \begin{tabular}{l | l}
+        \bfseries{Zeichen} & \bfseries{Wahrscheinlichkeit p(x)}\\ \hline
+        a & 0.5\\ 
+        b & 0.25\\
+        c & 0.1\\
+        d & 0.1\\
+        e & 0.05
+    \end{tabular}
+\end{center}
+
+\paragraph{Entscheidungsgehalt $H_0$ des Codes}\mbox{}\\
+$H_0=log_2(N) \rightarrow$ N = Anzahl Zeichen\\
+$H_0=log_2(5)=2.322$
+
+\paragraph{Redundanz der Quelle}\mbox{}\\
+$H(x) = p(x)*I(x)$\\
+$I(x) = log_2(\frac{1}{p(x)})$\\
+$H(x) = 0.5*1+0.25*2+0.1*3.322+0.1*3.322+0.05*4.322=1.88$
+$R_0 = H_0 - H(x) = 2.322-1.88=0.44$
+
+\paragraph{Mittlere Codewortlänge \&Redundanz des Codes}\mbox{}\\
+\begin{center}
+    \centering
+    \begin{tabular}{p{1cm} | p{1.5cm} | p{1.5cm} | p{1.25cm}}
+        \bfseries{Zeichen} & \bfseries{Codierung} & \bfseries{Länge (L)} & \bfseries{Mittlere Länge}\\ \hline
+        a & 1 & 1 & 0.5\\ 
+        b & 01 & 2 & 0.5\\
+        c & 0100 & 4 & 0.4\\
+        d & 1000 & 4 & 0.4\\
+        e & 11000 & 4 & 0.25
+    \end{tabular}
+\end{center}
+$L = p*L \rightarrow p_1*L_1+p_2*L_2...$\\
+$L=0.5+0.5+0.4+0.4+0.25=2.05$\\
+$R_c = L - H(x)$\\
+$2.05-1.88=0.17$
+
+\paragraph{Optimierung Codierung nach Huffman}\mbox{}\\
+Wie viel Prozent kann Redundanz in Code mit Huffman gegenüber ursprünglichem Code reduziert werden?\\
+\begin{center}
+    \vspace{-8pt}
+    \includegraphics[width=.5\linewidth]{./01-quellencodierung/optimierung_codierung}
+    \vspace{-8pt}
+\end{center}
+
+\begin{center}
+    \centering
+    \begin{tabular}{l | l}
+        \bfseries{Zeichen} & \bfseries{Huffman}\\ \hline
+        a & 1\\ 
+        b & 01\\
+        c & 001\\
+        d & 0001\\
+        e & 0000\\
+    \end{tabular}
+\end{center}
+
+Daraus folgt für die Redundanz nach Huffman = 0.02. 
+Das sind 11.8\% und entspricht einer Redundanzreduktion um 88.2\%.
+
+\subsubsection{Prüfung HS2016}
+Der Informationsgehalt einer Bildvorlage soll über einen Binärkanal mit der Kanalkapaziät von 40 kBit/sec übertragen werden. Dabei wird das Bild durch Abtastung in 105 Bildpunkte zerlegt. Ein Bild-punkt kann in 8 Helligkeitswerte H zerlegt werden.
+
+\paragraph{Welche Übertragungszeit ergibt sich, wenn alle Helligkeitswerte gleich codiert werden?}\mbox{}\\
+$L_D 8=3$ Bit pro Bildpunkt\\
+$\rightarrow TÜ = 3*10^5:40kBit/sec=7.5sec$\\
+
+Nähere Untersuchungen der Helligkeitswerte ergeben für die Helligkeitswerte H1 bis H8 folgende Ver-teilung ihrer Auftrittswahrscheinlichkeit:
+\begin{center}
+    \centering
+    \begin{tabular}{l | l}
+        \bfseries{H} & \bfseries{P}\\ \hline
+        H1 & 0.4\\ 
+        H2 & 0.35\\
+        H7 & 0.1\\
+        H4 & 0.0625\\
+        H3 & 0.035\\
+        H5 & 0.03225\\
+        H6 & 0.01425\\
+        H8 & 0.006
+    \end{tabular}
+\end{center}
+
+\paragraph{Um wie viel Prozent können sie die Übertragungsgeschwindigkeit eines Bildes verkürzen, wenn sie die erfassten Bildpunkte vor dem Versenden nach Huffmann codieren?}\mbox{}\\
+\begin{center}
+    \centering
+    \begin{tabular}{p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm}}
+        \bfseries{H} & \bfseries{P} & \bfseries{Möglicher Code} & \bfseries{Anzahl Bits} & \bfseries{Länge}\\ \hline
+        H1 & 0.4 & 0 & 1 & 0.4\\ 
+        H2 & 0.35 & 10 & 2 & 0.7\\
+        H7 & 0.1 & 110 & 3 & 0.3\\
+        H4 & 0.0625 & 1110 & 4 & 0.25\\
+        H3 & 0.035 & 11110 & 5 & 0.175\\
+        H5 & 0.03225 & 111110 & 6 & 0.1935\\
+        H6 & 0.01425 & 1111110 & 7 & 0.09975\\
+        H8 & 0.006 & 1111111 & 7 & 0.042\\
+        Total & & & & 2.16025
+    \end{tabular}
+\end{center}
+
+$TÜ=2.16*10^5:40kBit/sec = 5.4sec$\\
+$7.5=100\%$\\
+$5.4 = 5.4/7.5*100\% = 72\%$\\
+Daraus folgt eine Verbesserung um 28\%.
+
+\paragraph{Für den Kanal konnte die folgende Kanalmatrix P(Y|X) ermittelt werden.}\mbox{}\\
+$P(X|Y) = \begin{matrix}
+    0.9 & 0.1\\
+    0.1 & 0.9\\
+\end{matrix}$
+
+Wie lange dauert es dann mindestens, bis alle Daten fehlerfrei übertragen sind? Gehen Sie davon aus das „0“ und  „1“ gleich wahrscheinlich sind. \\
+$TÜ = 2.16*10^5:(1000*40Bit)=5.4sec$
+
+
+\subsection{Verschlüsselung}
+\subsubsection{Nachprüfung HS2020}
+Mit RSA-verschlüsselte Nachricht c=8 abgefangen und kennen öffentlichen Schlüssel des Empfängers (e=13, n=323).
+Aus sicherer Quelle wissen Sie, dass eine der beiden Primzahlen 17 ist. Entschlüsseln Sie die Nachricht!\\
+Gegeben: $c=8, e=13, n=323, p=17$\\
+$solve(323=17*x,x) \rightarrow q=19$\\
+$\phi(n) = (p-1)*(q-1) = 16*18=288$\\
+$d=\frac{2*\phi(n)+1}{e}=\frac{2*288+1}{13}$
+???
+
+\subsubsection{Prüfung HS2020}
+Mit RSA-verschlüsselte Nachricht c=4 abgefangen und kennen öffentlichen Schlüssel des Empfängers (e=13, n=143).
+Beide Primzahlen (p \& q) sind grösser als 10. Entschlüsseln Sie die Nachricht!\\
+Gegeben: $c=8, e=13, n=143$\\
+$p=11, q=13 \rightarrow 11*13 = 143$\\
+$\phi(n) = (p-1)*(q-1) = 10*12=120$\\
+$d=\frac{2*\phi(n)+1}{e}=\frac{2*288+1}{13}$
+???
+
+\subsubsection{Prüfung FS2017}
+Es wird ein asymmetrisches Verfahren (RSA) verwendet. Wie viele verschiedene Schlüsselpaare müssen erzeugt werden, wenn in einer Gruppe von 25 Teilnehmern. jeder mit jedem vertraulich kommunizieren möchte?\\
+\textit{25 Schlüsselpaare}\\
+
+Wie viele Schlüssel muss jeder Teilnehmer speichern, wenn sie davon ausgehen, dass es eine vertrauenswürdige „Schlüsselbank“ gibt, bei der die öffentlichen Schlüssel abgefragt werden können?\\
+\textit{Bei einer öffentlichen Schlüsselbank. Nur seinen Private Key (und ggf. noch seinen öffentlichen).}\\
+
+Teilnehmer a möchte an Teilnehmer b eine verschlüsselte und signierte Nachricht versenden. Welche Schlüssel verwendet
+\begin{itemize}
+    \item User a: \textit{public Key von b und private Key von a}
+    \item User b: \textit{public Key von a und private Key von b}\\
+\end{itemize}
+
+Kommt es bei der Anwendung durch die Teilnehmer a und b dabei auf die Reihenfolge der Schlüssel an?\\
+\textit{Nein}\\
+
+\paragraph{Gegeben seien die beiden Primzahlen 11 und 5}\mbox{}\\
+Bestimmen sie die Zahl \textit{n} und die Zahl $\phi(n)$\\
+$n=11*5=55$\\
+$\phi(n) = 10*4=40$
+
+\paragraph{Zur Verschlüsselung wird der öffentliche Schlüssel e  = 17 verwendet}\mbox{}\\
+Ermitteln sie den privaten Schlüssel d zum Entschlüsseln einer Nachricht.\\
+Es muss gehlten: $e*dmod\phi(n)=1$\\
+
+\begin{center}
+    \vspace{-8pt}
+    \includegraphics[width=.5\linewidth]{./01-quellencodierung/fs2017_4}
+    \vspace{-8pt}
+\end{center}
+
+Daraus folgt, 33 ist die Inverse zu 17 bzgl. der mod40 Rechnung. D.h. der Schlüssel zum Entschlüsseln ist 33.
+
+\subsubsection{FS2016}
+91 Teilnehmer wollen paarweise vertraulich Informationen austauschen.\\
+
+In einem ersten Ansatz wird ein symmetrisches Verfahren gewählt. 
+Wie viele verschiedene Schlüssel müssen erzeugt werden, wenn jeder mit jedem vertraulich kommunizieren möchte?\\
+\textit{91/2*90=4095}\\
+
+Wie viele Schlüssel muss jeder Teilnehmer speichern?\\
+\textit{N=90}\\
+
+
+

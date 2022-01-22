@@ -1,0 +1,31 @@
+%! Licence = CC BY-NC-SA 4.0
+
+%! Author = gianfluetsch
+%! Date = 22.01.2022
+%! Project = icth_summary
+
+%import template
+\input{style/template.tex}
+
+
+\newcommand{\TITLE}{ICTh Cheat Sheet}
+
+\newcommand{\DELIVERYDATE}{\today}
+
+\begin{document}
+
+    \begin{multicols*}{4}
+        \setlength{\columnseprule}{0.4pt}
+        \footnotesize
+
+        %import tableofcontents
+        \input{style/tableofcontents.tex}
+
+
+        %import content
+        \input{content/01-quellencodierung.tex}
+        \input{content/02-kanalcodierung.tex}
+
+    \end{multicols*}
+
+\end{document}

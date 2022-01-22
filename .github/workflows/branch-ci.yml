@@ -1,0 +1,28 @@
+name: Build LaTeX document
+on: 
+  push:
+    branches-ignore: [ main ]
+ 
+    
+jobs:
+    Build-LaTeX-Doc:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Set up Git Repository
+          uses: actions/checkout@v2
+          
+        - name: Compile LaTeX Doc
+          id: compile-doc
+          uses: xu-cheng/latex-action@v2
+          with:
+            root_file: main.tex
+
+        - name: Rename output
+          run: mv main.pdf CyDef_Hacking-Lab_Summary.pdf
+          
+        - name: Upload pdf
+          uses: actions/upload-artifact@v2
+          with:
+            name: CyDef_Hacking-Lab_Summary
+            path: CyDef_Hacking-Lab_Summary.pdf
+            retention-days: 7
