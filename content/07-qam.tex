@@ -1,0 +1,37 @@
+%! Licence = CC BY-NC-SA 4.0
+
+%! Author = gianfluetsch
+%! Date = 22. Jan 2022
+%! Project = icth_summary
+
+\section{Quadrature Amplitude Modulation (QAM)}
+
+\subsubsection{Prüfung HS2019}
+Ein binärer Datenstrom soll via eine 64-QAM Modulation über ein verdrilltes Kupferaderpaar mit Wellenimpedanz $Zw = 100 \Omega $  übertragen werden.\\
+In der unterstehenden komplexen Signalebene sind die vier Signalpunkte mit der grössten Leistung eingetragen. Ergänzen Sie das 64-QAM Modulationsschema und zeichnen Sie
+die Entscheidungsschwellen ein.\\
+\begin{center}
+    \vspace{-8pt}
+    \includegraphics[width=.5\linewidth]{./07-qam/hs2019}
+    \vspace{-8pt}
+\end{center}
+
+Wie gross ist der Abstand jedes Signalpunkts von der nächsten Entscheidungsschwelle?\\
+$50\mu V$\\
+
+Welchen Effektivwert $U_{eff}$ darf das normalverteilte Rauschen haben, wenn das Signal-zu-Rauschverhältnis \textbf{SNR = 20 dB} sein soll, damit eine Bitfehlerrate \textbf{$BER = 10^{-23}$} resultiert?\\
+$1\mu V$\\
+
+Wie gross wird beim oben bestimmten Ueff die mittlere Rauschleistung N in [W] an einem Widerstand von $R = 100 \omega$? Drücken Sie diese Rauschleistung auch als N in [dBm] aus.\\
+$N=\frac{U_{eff}^2}{R}=\frac{(10^{-6})^2}{100}=10^{-14}W=0.01pW$\\
+$N=10log\frac{N}{10^{-3}}=10log(10-{-11})=-110dBm$\\
+
+Da es sich um weisses Rauschen handelt, gilt $N=10logkT\Delta f=-174dBm+10log\delta f$.
+Wie gross darf die Systembandbreite B maximal sein, damit der oben berechnete Rauschpegel für die 64-QAM Detektion nicht überschritten wird?\\
+$10logB=N+174dBm=-110dBm+174dBm=64dB$\\
+\textit{Daraus folgt eine Systembandbreite von $B=10Mhz/4=2.5MHz$}\\
+
+Wie hoch darf die Bitrate des mit 64-QAM modulierten Datenstroms maximal sein, damit die Bitfehlerrate \textbf{$BER = 10^{-23}$} eingehalten wird?\\
+\textit{Wegen der vorgegebenen Systembandbreite von B = 2.5 MHz darf die Symbolrate maximal 2.5 MBaud sein}.\\
+\textit{Da mit 64-QAM 6 Bit pro Symbol übertragen werden können, resultiert eine Bitrate von 15 Mbit/s.}
+
