@@ -76,10 +76,10 @@ Huffman: $14 Bit$\\
 $\rightarrow 14Bit/24Bit=0.5833=58\%$
 
 \paragraph{Min. theoretische Redundanz Huffman}\mbox{}\\
-???
+% TODO: ???
 
 \paragraph{Wann wird das erreicht?}\mbox{}\\
-???
+% TODO: ???
 
 \subsubsection{Prüfung FS2017}
 \begin{center}
@@ -198,68 +198,110 @@ $P(X|Y) = \begin{matrix}
 Wie lange dauert es dann mindestens, bis alle Daten fehlerfrei übertragen sind? Gehen Sie davon aus das „0“ und  „1“ gleich wahrscheinlich sind. \\
 $TÜ = 2.16*10^5:(1000*40Bit)=5.4sec$
 
+\subsection{Huffman}
+\subsubsection{Prüfung HS2009}
+Gegeben sind die folgenden Zeichen a, b, c, d mit den Auftrittswahrscheinlichkeiten 
+P{a} = 0.5, P{b}= 0.25, P{c} = 0.125, P{d}= 0.125\\
 
-\subsection{Verschlüsselung}
-\subsubsection{Nachprüfung HS2020}
-Mit RSA-verschlüsselte Nachricht c=8 abgefangen und kennen öffentlichen Schlüssel des Empfängers (e=13, n=323).
-Aus sicherer Quelle wissen Sie, dass eine der beiden Primzahlen 17 ist. Entschlüsseln Sie die Nachricht!\\
-Gegeben: $c=8, e=13, n=323, p=17$\\
-$solve(323=17*x,x) \rightarrow q=19$\\
-$\phi(n) = (p-1)*(q-1) = 16*18=288$\\
-$d=\frac{2*\phi(n)+1}{e}=\frac{2*288+1}{13}$
-???
-
-\subsubsection{Prüfung HS2020}
-Mit RSA-verschlüsselte Nachricht c=4 abgefangen und kennen öffentlichen Schlüssel des Empfängers (e=13, n=143).
-Beide Primzahlen (p \& q) sind grösser als 10. Entschlüsseln Sie die Nachricht!\\
-Gegeben: $c=8, e=13, n=143$\\
-$p=11, q=13 \rightarrow 11*13 = 143$\\
-$\phi(n) = (p-1)*(q-1) = 10*12=120$\\
-$d=\frac{2*\phi(n)+1}{e}=\frac{2*288+1}{13}$
-???
-
-\subsubsection{Prüfung FS2017}
-Es wird ein asymmetrisches Verfahren (RSA) verwendet. Wie viele verschiedene Schlüsselpaare müssen erzeugt werden, wenn in einer Gruppe von 25 Teilnehmern. jeder mit jedem vertraulich kommunizieren möchte?\\
-\textit{25 Schlüsselpaare}\\
-
-Wie viele Schlüssel muss jeder Teilnehmer speichern, wenn sie davon ausgehen, dass es eine vertrauenswürdige „Schlüsselbank“ gibt, bei der die öffentlichen Schlüssel abgefragt werden können?\\
-\textit{Bei einer öffentlichen Schlüsselbank. Nur seinen Private Key (und ggf. noch seinen öffentlichen).}\\
-
-Teilnehmer a möchte an Teilnehmer b eine verschlüsselte und signierte Nachricht versenden. Welche Schlüssel verwendet
-\begin{itemize}
-    \item User a: \textit{public Key von b und private Key von a}
-    \item User b: \textit{public Key von a und private Key von b}\\
-\end{itemize}
-
-Kommt es bei der Anwendung durch die Teilnehmer a und b dabei auf die Reihenfolge der Schlüssel an?\\
-\textit{Nein}\\
-
-\paragraph{Gegeben seien die beiden Primzahlen 11 und 5}\mbox{}\\
-Bestimmen sie die Zahl \textit{n} und die Zahl $\phi(n)$\\
-$n=11*5=55$\\
-$\phi(n) = 10*4=40$
-
-\paragraph{Zur Verschlüsselung wird der öffentliche Schlüssel e  = 17 verwendet}\mbox{}\\
-Ermitteln sie den privaten Schlüssel d zum Entschlüsseln einer Nachricht.\\
-Es muss gehlten: $e*dmod\phi(n)=1$\\
-
+Zeigen Sie, dass eine nach Huffmann codierte Quellencodierung einen Redundanzfreien 
+Code ergibt.
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.5\linewidth]{./01-quellencodierung/fs2017_4}
+    \includegraphics[width=.5\linewidth]{./01-quellencodierung/hs2009}
     \vspace{-8pt}
 \end{center}
 
-Daraus folgt, 33 ist die Inverse zu 17 bzgl. der mod40 Rechnung. D.h. der Schlüssel zum Entschlüsseln ist 33.
+$H(X) = 0.5*log_2(\frac{1}{0.5})+0.25*log_2(\frac{1}{0.25})+0.125*log_2(\frac{1}{0.125})=1.75$\\
+$L=0.5*1+0.25*2+0.125*3+0.125*3=1.75$\\
+$R_c=L-H(x)=0$
 
-\subsubsection{FS2016}
-91 Teilnehmer wollen paarweise vertraulich Informationen austauschen.\\
+\subsubsection{Prüfung FS2009}
+Codieren Sie die nachfolgenden Zeichen mit der Huffmancodierung\\
+\textit{ABRAKADABRA}\\
 
-In einem ersten Ansatz wird ein symmetrisches Verfahren gewählt. 
-Wie viele verschiedene Schlüssel müssen erzeugt werden, wenn jeder mit jedem vertraulich kommunizieren möchte?\\
-\textit{91/2*90=4095}\\
+\paragraph{Auftrittswahrscheinlichkeit pro Zeichen}\mbox{}\\
+$\frac{Häufigkeitsverteilung Zeichen}{Anzahl Symbole}$
 
-Wie viele Schlüssel muss jeder Teilnehmer speichern?\\
-\textit{N=90}\\
+\begin{center}
+    \centering
+    \begin{tabular}{p{1.9cm} | p{0.5cm} | p{0.5cm} | p{0.5cm} | p{0.5cm} | p{0.5cm} }
+        \bfseries{Symbol} & \bfseries{A} & \bfseries{B} & \bfseries{R} & \bfseries{K} & \bfseries{D}\\ \hline
+        Häufigkeitsvert. & 5 & 2 & 2 & 1 & 1\\ 
+        p(Symbol) & 0.45 & 0.18 & 0.18 & 0.09 & 0.09
+    \end{tabular}
+\end{center}
+
+\paragraph{Informationsgehalt pro Zeichen}\mbox{}\\
+$I(x)=log_2(\frac{1}{p(x)}) \rightarrow [I(x)]=bit$
+
+\begin{center}
+    \centering
+    \begin{tabular}{p{1.9cm} | p{0.5cm} | p{0.5cm} | p{0.5cm} | p{0.5cm} | p{0.5cm} }
+        \bfseries{Symbol} & \bfseries{A} & \bfseries{B} & \bfseries{R} & \bfseries{K} & \bfseries{D}\\ \hline
+        Häufigkeitsvert. & 5 & 2 & 2 & 1 & 1\\ 
+        I(x) & 1.37 & 2.45 & 2.45 & 3.45 & 3.45
+    \end{tabular}
+\end{center}
+
+\paragraph{Huffmancodierung}\mbox{}\\
+% TODO:
+
+\subsection{Diskrete Quelle mit Gedächtnis}
+\subsubsection{Prüfung FS2009}
+Ein Code hat die durch das angegebene Markoffdiagramm gegeben inneren Abhängigkeiten.\\
+
+Ergänzen Sie die fehlenden Wahrscheinlichkeitswerte im Diagramm.
+\begin{center}
+    \vspace{-8pt}
+    \includegraphics[width=.5\linewidth]{./01-quellencodierung/hs2009_1}
+    \vspace{-8pt}
+\end{center}
+
+Bestimmen Sie die Entropie des Codes H(X) sowie die Verbundentropie H(X|Y). Um wieviel Prozent kann die Redundanz gesenkt werden, wenn die inneren Abhängigkeiten berücksichtigt werden?\\
+% TODO
+
+\subsubsection{Prüfung HS2009}
+Sie untersuchen eine diskrete Quelle mit Gedächtnis. Die Quelle hat den folgenden Zeichensatz: A, B, C\\
+Die bedingte Wahrscheinlichkeit ist gegeben:\\
+$\begin{matrix}
+    P(A|A) & P(B|A) & P(C|A)\\
+    P(A|B) & P(B|B) & P(C|B)\\
+    P(A|C) & P(B|C) & P(C|C)
+\end{matrix} = \begin{matrix}
+    0 & 1/5 & 8/10\\
+    1/10 & 1/2 & 2/5\\
+    9/20 & 1/2 & 1/20
+\end{matrix}$
+
+Zeichnen Sie das Markoff-Diagramm.
+\begin{center}
+    \vspace{-8pt}
+    \includegraphics[width=.5\linewidth]{./01-quellencodierung/hs2009_1}
+    \vspace{-8pt}
+\end{center}
+
+\subsection{Lempel-Ziv}
+\subsubsection{Prüfung FS2009}
+Codieren Sie die nachfolgende Bitfolge mit dem Lempel-Ziv 77 Verfahren:\\
+$01101110101010001101110$
+\begin{center}
+    \vspace{-8pt}
+    \includegraphics[width=.8\linewidth]{./01-quellencodierung/hs2009_2}
+    \vspace{-8pt}
+\end{center}
+
+Bestimmen Sie die Auftrittswahrscheinlichkeiten der Zeichen\\
+$P(A)=iP(B)+1/10+P(C)*9/20$\\
+$P(B)=P(A)*1/5+P(B)*1/2+P(C)*1/2$\\
+$P(C)=P(A)*8/10+P(B)*2/5+P(C)*1/20$\\
+$1=P(A)+P(B)+P(C)$\\
+
+$P(A)=\frac{55}{269}=0.20$\\
+$P(B)=\frac{118}{269}=0.43$\\
+$P(C)=\frac{96}{269}=0.34$
+
+
+
 
 
 
