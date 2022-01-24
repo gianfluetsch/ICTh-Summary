@@ -14,11 +14,32 @@ Ein NRZ Signal hat den unten aufgezeichneten Signalverlauf. Skizzieren Sie den e
     \vspace{-8pt}
 \end{center}
 
-Vergleichen Sie die drei Codierungsarten anhand der oben gegebenen und der erstellten Codierungen.\\
-\textit{Lange 0Folgen werden beim AMI Code zu einem Problem wegen der Phasen und Taktrückgewinnung. NRZ hat dieselben Probleme der Phasen- und Taktrückgewinnung bei
-langen 0 oder 1 Folgen. Der Manchestercode weist bei jedem Bit einen Pegelwechsel auf.}
+\textbf{Vergleichen Sie die drei Codierungsarten anhand der oben gegebenen und der erstellten Codierungen.}\\
+Lange 0-Folgen werden beim AMI Code zu einem Problem wegen der Phasen und Taktrückgewinnung. NRZ hat dieselben Probleme der Phasen- und Taktrückgewinnung bei
+langen 0 oder 1 Folgen. Der Manchestercode weist bei jedem Bit einen Pegelwechsel auf.
 
 \subsection{Steffen}
+
+\subsubsection{Nachprüfung HS2020}
+In der untentstehenden Grafik wird ein binäres Datensignal mittels einer Leitungscodes über einen Kommunikationskanal übertragen:
+\begin{center}
+    \vspace{-8pt}
+    \includegraphics[width=.9\linewidth]{./06-leitungscodierung/hs2020-2}
+    \vspace{-8pt}
+\end{center}
+
+\textbf{Um welchen Leitungscode handelt es sich?}\\
+Bipolarer NRZ (Non Return to Zero) Code.\\
+
+\textbf{Ist der Leitungscode bei allen möglichen Datensequenzen mittelwertfrei?}\\
+$\rightarrow$ nicht mittelwertfrei, da lange '0'-Folgen entweder einen positiven oder negativen DC-Offset bewirken.\\
+
+\textbf{Bei welchen Datensequenzen könnte beim Empfänger der Takt verloren gehen?}\\
+Der Takt kann bei langen '0'-Folgen verloren gehen, da keine Pegelwechsel stattfinden.\\
+
+\textbf{Mit welcher Zusatzmassnahme könnte die Mittelwertfreiheit und die Taktextraktion mit hoher Wahrscheinlichkeit garantiert werden?}\\
+Durch Scramkeln der Datensequenz vor der Leitungscodierung könnte die Mittelwertfreiheit und die Taktextraktion mit hoher Wahrscheinlichkeit garantiert werden.
+
 \subsubsection{Prüfung HS2018}
 Eine Datenquelle sendet dauernd die Nullsequenz $'... 0 0 0 0 0 0 ...'$. Kreuzen Sie an, ob die unten aufgeführten Leitungscodes für diese Sequenz annähernd gleichspannungsfrei sind, respektive ob genügend Pegelwechsel für eine Taktrückgewinnung vorhanden sind.
 \begin{center}

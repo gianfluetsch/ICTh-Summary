@@ -12,8 +12,7 @@ Bestimmen sie die obere Grenzfrequenz, die der Subwoofer maximal abgeben darf.\\
 
 Gehen sie dabei von den folgenden Annahmen aus. Der Abstand von einem Ohr zum anderen ist  im Mittel mit 21 cm gegeben. Die Schallgeschwindigkeit wird mit 330 m/s angenommen.\\
 
-Stellen sie die maximale Phasenverschiebung des Audiosignals von einem zum anderen Ohr als Funktion der Frequenz dar.\\
-
+\textbf{Stellen sie die maximale Phasenverschiebung des Audiosignals von einem zum anderen Ohr als Funktion der Frequenz dar.\\}
 $\phi(f)=2\pi f s/v = f = \frac{\phi}{2\pi}*\frac{s}{v}$\\
 $f=\frac{0.2*330 m/s}{2\pi*0.21m} = 50 Hz$\\
 
@@ -24,17 +23,17 @@ Fourier:  Gegeben ist ein Generator der folgendes Dreieckssignal mit der Frequen
     \vspace{-8pt}
 \end{center}
 
-Sie wollen ein harmonisches Signal mit der Frequenz von 9 kHz erzeugen. Entwickeln Sie eine Prinzipschaltung unter Angabe aller signifikanten Werte, die dies realisiert.\\
-$y(t)=\frac{8\hat{y}}{\pi^2}(\frac{1}{1^2}*sin(\omega_0 t)-\frac{1}{3^2}*sin(3\omega_0 t)+\frac{1}{5^2}*sin(5\omega_0 t)-...)$\\
+\textbf{Sie wollen ein harmonisches Signal mit der Frequenz von 9 kHz erzeugen. Entwickeln Sie eine Prinzipschaltung unter Angabe aller signifikanten Werte, die dies realisiert.}\\
+$y(t)=\frac{8\hat{y}}{\pi^2}(\frac{1}{1^2}*sin(\Omega_0 t)-\frac{1}{3^2}*sin(3\Omega_0 t)+\frac{1}{5^2}*sin(5\Omega_0 t)-...)$\\
 \textit{Die Frequenz von 9 kHz entspricht der zweiten harmonischen $\rightarrow$ durch einen Bandpass mit der unteren Grezfrequenz von z.B. 8 khz und einer oberen Grenzfrequenz von z. Bsp 10 kHz }\\
 
-Wie gross ist die Amplitude dieser harmonischen Schwingung?\\
+\textbf{Wie gross ist die Amplitude dieser harmonischen Schwingung?}\\
 $a=\frac{8*10V}{9*\pi^2}=0.9V$\\
 
-Um wie viel db ist dann das Ausgangssignal gegenüber dem Eingangssignal gedämpft?\\
+\textbf{Um wie viel db ist dann das Ausgangssignal gegenüber dem Eingangssignal gedämpft?}\\
 $a=10log\frac{0.9V}{10V}=-10.46db$\\
 
-Wie hoch ist dann der Pegel in V beim Empfänger, wenn die nachgeschaltete Übertra-gungsstrecke eine Dämpfung von 3 db aufweist?\\
+\textbf{Wie hoch ist dann der Pegel in V beim Empfänger, wenn die nachgeschaltete Übertra-gungsstrecke eine Dämpfung von 3 db aufweist?}\\
 $-13.46db = 10log\frac{x}{10}$\\
 $10^{-1.346}*10V = 0.045V$
 
@@ -46,8 +45,8 @@ Zur Verschleierung von Sprachsignalen wird das System in Bild unten, auch Scramb
     \vspace{-8pt}
 \end{center}
 
-Was versteht man unter Kehrlage eines Signals?\\
-\textit{Das höherfrequente Nachchtensignal liegt in beiden Seitenbändern näher bei der Trägerfrequenz als das niedfrequente Nachrichtensignal.}\\
+\textbf{Was versteht man unter Kehrlage eines Signals?}\\
+Das höherfrequente Nachchtensignal liegt in beiden Seitenbändern näher bei der Trägerfrequenz als das niedfrequente Nachrichtensignal.\\
 
 Analysieren Sie das System, indem Sie die Spektren der Signale u1 bis u5 skizzieren. Es ist g die Grenzfrequenz des Eingangssignals u1.\\
 Geben Sie ferner die Frequenzen f1, f2 sowie fs1 und fs2 zueinander so an, dass der Scrambler seine Aufgabe erfüllen kann.
@@ -64,8 +63,8 @@ Gegeben ist das folgende Spektrum eines modulierten Sprachsignals.
     \vspace{-8pt}
 \end{center}
 
-Befindet sich das Sprachsignal fN in der Kehr- oder Regellage? (Anm. die Frequenz fN ist die obere Grenzfrequenz des Sprachsignals)\\
-\textit{Das Signal befindet sich nicht in der Kehrlage.}\\
+\textbf{Befindet sich das Sprachsignal fN in der Kehr- oder Regellage? (Anm. die Frequenz fN ist die obere Grenzfrequenz des Sprachsignals)}\\
+Das Signal befindet sich nicht in der Kehrlage.\\
 
 Konstruieren Sie eine Demodulatoschaltung und zeigen sie rechnerisch, dass das Sprachsignal fN im Basisband vorliegt.\\
 \begin{center}
@@ -88,14 +87,14 @@ Gegeben ist das folgende Blockschaltbild:
     \vspace{-8pt}
 \end{center}
 
-Zeichnen Sie das Frequenzspektrum, das Sie an dem Punkt1, dem Punkt 2 und dem Punkt 3 beobachten können.\\
-\textit{Die Fourierzerlegung folgt für}\\
+\textbf{Zeichnen Sie das Frequenzspektrum, das Sie an dem Punkt1, dem Punkt 2 und dem Punkt 3 beobachten können.}\\
+Die Fourierzerlegung folgt für\\
 $f(x)=a(sin(x)+\frac{sin(2x)}{2}+\frac{sin(3x)}{3}+...)$\\
 
-\textit{Das positive Sägezahnsignal zu:}\\
+Das positive Sägezahnsignal zu:\\
 $f(x)=a(\frac{1}{1^2}*sin(x)-\frac{sin(3x)}{3^2}+\frac{sin(5x)}{5^2}-....)$\\
 
-\textit{Und das Dreieckssignal zu:}
+Und das Dreieckssignal zu:
 \begin{center}
     \vspace{-8pt}
     \includegraphics[width=.8\linewidth]{./03-signale/fs2009_2}
