@@ -8,7 +8,7 @@
 
 \subsection{Kompression/ Komprimierung}
 
-\subsubsection{Nachprüfung HS2020}
+\subsubsection{A}
 \begin{center}
     \centering
     \begin{tabular}{l | l}
@@ -76,12 +76,12 @@ Huffman: $14 Bit$\\
 $\rightarrow 14Bit/24Bit=0.5833=58\%$
 
 \paragraph{Min. theoretische Redundanz Huffman}\mbox{}\\
-% TODO: ???
+Ein optimaler Code besitzt minimale Coderedundanz. Dennoch kann diese grösser als 0 sein.
 
 \paragraph{Wann wird das erreicht?}\mbox{}\\
-% TODO: ???
+Wenn gleichverteilung herrscht (\& Code optimal ist).
 
-\subsubsection{Prüfung FS2017}
+\subsubsection{B}
 \begin{center}
     \centering
     \begin{tabular}{l | l}
@@ -144,7 +144,7 @@ Wie viel Prozent kann Redundanz in Code mit Huffman gegenüber ursprünglichem C
 Daraus folgt für die Redundanz nach Huffman = 0.02. 
 Das sind 11.8\% und entspricht einer Redundanzreduktion um 88.2\%.
 
-\subsubsection{Prüfung HS2016}
+\subsubsection{C}
 Der Informationsgehalt einer Bildvorlage soll über einen Binärkanal mit der Kanalkapaziät von 40 kBit/sec übertragen werden. Dabei wird das Bild durch Abtastung in 105 Bildpunkte zerlegt. Ein Bild-punkt kann in 8 Helligkeitswerte H zerlegt werden.
 
 \paragraph{Welche Übertragungszeit ergibt sich, wenn alle Helligkeitswerte gleich codiert werden?}\mbox{}\\
@@ -199,7 +199,7 @@ Wie lange dauert es dann mindestens, bis alle Daten fehlerfrei übertragen sind?
 $TÜ = 2.16*10^5:(1000*40Bit)=5.4sec$
 
 \subsection{Huffman}
-\subsubsection{Prüfung HS2009}
+\subsubsection{A}
 Gegeben sind die folgenden Zeichen a, b, c, d mit den Auftrittswahrscheinlichkeiten 
 P{a} = 0.5, P{b}= 0.25, P{c} = 0.125, P{d}= 0.125\\
 
@@ -215,7 +215,7 @@ $H(X) = 0.5*log_2(\frac{1}{0.5})+0.25*log_2(\frac{1}{0.25})+0.125*log_2(\frac{1}
 $L=0.5*1+0.25*2+0.125*3+0.125*3=1.75$\\
 $R_c=L-H(x)=0$
 
-\subsubsection{Prüfung FS2009}
+\subsubsection{B}
 Codieren Sie die nachfolgenden Zeichen mit der Huffmancodierung\\
 \textit{ABRAKADABRA}\\
 
@@ -247,7 +247,7 @@ $I(x)=log_2(\frac{1}{p(x)}) \rightarrow [I(x)]=bit$
 % TODO:
 
 \subsection{Diskrete Quelle mit Gedächtnis}
-\subsubsection{Prüfung FS2009}
+\subsubsection{A}
 Ein Code hat die durch das angegebene Markoffdiagramm gegeben inneren Abhängigkeiten.\\
 
 Ergänzen Sie die fehlenden Wahrscheinlichkeitswerte im Diagramm.
@@ -258,9 +258,9 @@ Ergänzen Sie die fehlenden Wahrscheinlichkeitswerte im Diagramm.
 \end{center}
 
 Bestimmen Sie die Entropie des Codes H(X) sowie die Verbundentropie H(X|Y). Um wieviel Prozent kann die Redundanz gesenkt werden, wenn die inneren Abhängigkeiten berücksichtigt werden?\\
-% TODO
+% TODO: Schritte über TI-Nspire beschreiben & wo ablesen
 
-\subsubsection{Prüfung HS2009}
+\subsubsection{B}
 Sie untersuchen eine diskrete Quelle mit Gedächtnis. Die Quelle hat den folgenden Zeichensatz: A, B, C\\
 Die bedingte Wahrscheinlichkeit ist gegeben:\\
 $\begin{matrix}
@@ -280,8 +280,10 @@ Zeichnen Sie das Markoff-Diagramm.
     \vspace{-8pt}
 \end{center}
 
+\columnbreak
+
 \subsection{Lempel-Ziv}
-\subsubsection{Prüfung FS2009}
+\subsubsection{A}
 Codieren Sie die nachfolgende Bitfolge mit dem Lempel-Ziv 77 Verfahren:\\
 $01101110101010001101110$
 \begin{center}

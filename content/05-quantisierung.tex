@@ -5,12 +5,51 @@
 %! Project = icth_summary
 
 \section{Quantisierung}
-\subsection{Rinkel}
-\subsubsection{Prüfung FS2009}
-Ist es nach einer Quantisierung möglich das originale Analoge Signal zu 100\% wieder herzustellen? (Mit Begründung).\\
-\textit{Nein, das analoge Signal wird aus dem digitalen Signal lediglich rekonstriert. Es ist jedoch von geringerer Qualität als das Originalsignal. Diese Differenz zwischen den Signalen wird durch
-den Quantisierungsfehler hervorgerufen.}\\
+\subsubsection{A}
+\textbf{Ist es nach einer Quantisierung möglich das originale Analoge Signal zu 100\% wieder herzustellen? (Mit Begründung).}\\
+Nein, das analoge Signal wird aus dem digitalen Signal lediglich rekonstriert. Es ist jedoch von geringerer Qualität als das Originalsignal. Diese Differenz zwischen den Signalen wird durch
+den Quantisierungsfehler hervorgerufen.\\
 
-Welche Grund-Bitrate wird für ein Sprachsignal (digitale Übertragung der Sprache in einem Telefonkanal) benötigt? (Berechnung und Begründung)\\
-\textit{Die Sprache hat einen Umfang von0,3-3,4 kHz. Nach inernationalen Normen wird ein Frequenzspektrum von 4kHz angenommen. Daraus folgt die Abtastfrequenz 2*4kHz = 8kHz. Im weiteren sind $2^12$ Quantisierungsstufen zu wählen. Durch die Kompandierung werden diese vor der Übertragung auf 8 bit komprimiert. Dies ergibt eine CW-Länge von 8Bit. Die
-Bitrate folgt nun aus der Abtastfrequenz und der CW-Bitlänge 8kHz * 8 Bit = 64kBit/s}
+\textbf{Welche Grund-Bitrate wird für ein Sprachsignal (digitale Übertragung der Sprache in einem Telefonkanal) benötigt? (Berechnung und Begründung)}\\
+Die Sprache hat einen Umfang von0,3-3,4 kHz. Nach inernationalen Normen wird ein Frequenzspektrum von 4kHz angenommen. Daraus folgt die Abtastfrequenz 2*4kHz = 8kHz. Im weiteren sind $2^12$ Quantisierungsstufen zu wählen. Durch die Kompandierung werden diese vor der Übertragung auf 8 bit komprimiert. Dies ergibt eine CW-Länge von 8Bit. Die
+Bitrate folgt nun aus der Abtastfrequenz und der CW-Bitlänge 8kHz * 8 Bit = 64kBit/s
+
+\subsubsection{B}
+Ein analoges, auf 4 kHz bandbegrenztes Signal s(t) soll in q = 64 Stufen quantisiert werden.
+
+\textbf{Welche Bitrate ist für die digitale Üertragung dieses Signals mindestens erforderlich (theoretischer Grenzwert)?}\\
+Es liegt ein bandbegrenztes Signal vor. Gemäss in der Vorlesung vorgestellten Verfahren zur Abtastung muss das Nutzsignal zur fehlerfreien Rückgewinnung mit mindestens der doppelten oberen Grenzfrequenz des Nutzsignals abgetastet werden.\\
+Die Wortgrösse ist bei $q=64=2^6$ ist 6 Bit und die Bitrate entsprechend $2*4kHz*6Bit=48kBit/s$\\
+
+\textbf{Wie gross ist die Bitrate, wenn das Signal überabgetastet wird (10\%, 20\%)?}\\
+Die Wortgrösse ändert sich nicht durch die Überabtastung natürlich nicht.\\
+Die Bitrate ist entsprechend $2*1.1*4kHz*6Bit=52.8kHz resp. 2*1.2*4kHz*6Bit=57.6kHz$\\
+
+\textbf{Ein analoges, amplitudenbegrenztes Signal ($0 \leq  U \leq  1V und 0 \leq  f \leq  100Hz$) wird quantisiert über eine Binärkanal übertragen.}\\
+Es können $2*100Hz=200$ Abtastungen pro Sekunde durchgeführt werden. Pro Abtastung stehen $\frac{1200Bit/s}{200Hz}=6Bit$ zur Verfügung. Mit 6 Bit sind $2^6=64$ Stufen möglich, was einer Wertstufe von $\Delta U=\frac{1V}{64}=15.6mV$ entspricht.\\
+
+\columnbreak
+
+\textbf{Wie gross müsste die Übertragungsrate mindestens sein, falls eine Auflösung von $\Delta U = 5mV$ gefordert wäre?}\\
+\textit{im fehlerfreien Fall:}\\
+Dafür bräcute es $\frac{1V}{5mV}=200$ Stufen, wozu mindestens 8 Bit($2^8=256$) benötigt werden. Die Übertragungsrate wäre dementsprechend $2*100Hz*8=1600Bit/s$.\\
+
+\textit{bei einem fehlerbehafteten Kanal mit der Kanalmatrix:}\\
+$P(Y|X)=\begin{bmatrix}
+    0.995 & 0.05\\
+    0.01 & 0.99\\
+\end{bmatrix}$\\
+
+Sie können von einer gleichverteilten binären Quelle ausgehen und die Kanalmatrix als unabhängig von der Taktfrequenz betrachten.\\
+Entscheidend für die tatsächliche Übertragung ist die Transinformation. Die Irrelevanz ist:\\
+
+$H(Y|X)=-\sum_{i_1}^2\sum_{k=1}^2p(x_i,y_k)*log_2(p(y_k|x_i))$\\
+$=-\sum_{i_1}^2\sum_{k=1}^2p(x_i)*p(y_k|x_i)*log_2(p(y_k|x_i))$\\
+$=-0.5*0.995*log_2(0.995)-0.5*0.005*log_2(0.005)$\\
+$-0.5*0.99*log_2(0.99)-0.5*0.01*log_2(0.01)$\\
+$=0.0631$\\
+
+Bei einer gleichverteilten Quelle ist die Entropie $H(Y) = 1$. Die Transinformation ist damit:\\
+$T=H(Y)-H(Y|X)=1-0.0631=0.9369$\\
+
+Um 1600 Bit/s zu übertragen werden damit mindestens $\frac{1600 Bit/s}{0.9369}=1707 Bit/s$ benötigt.

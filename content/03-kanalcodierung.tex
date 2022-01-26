@@ -7,7 +7,7 @@
 \section{Kanalcodierung}
 
 \subsection{Blockcode}
-\subsubsection{Nachprüfung HS2020}
+\subsubsection{A}
 $x_5=x_1+x_2+x_3$\\
 $x_6=x_1+x_2+x_4$\\
 $x_7=x_2+x_3+x_4$
@@ -41,8 +41,8 @@ Geht man nun davon aus, dass nur ein Fehler passiert ist, so wird man hier eine 
 \paragraph{Fehler korrigieren?}\mbox{}\\
 Nein, Fehler kann nicht korrigiert werden, da er in der regulären Prüfmatrix nicht gefunden wurde.
 
-\subsubsection{Prüfung Fs2017}
-Gegeben ist die folgende Generatormatrix eines systematischen Blockcodes mit den Prüfvektoren $p_1$ bis $p_7$:
+\subsubsection{B}
+Gegeben ist die folgende Generatormatrix eines systematischen Blockcodes mit den Prüfvektoren $p_1$ bis $p_7$:\\
 $\begin{matrix}
     p_1 & p_2 & p_3 & p_4 & p_5 & p_6 & p_7\\
     1 & 0 & 1 & 1 & 0 & 0 & 0\\
@@ -61,17 +61,17 @@ Der Code hat 4 Kontrollstellen
 101
 
 \paragraph{Ermitteln Sie die Hamming-Distanz des Codes}\mbox{}\\
-$H=4$\\
-Es müssen mindestens 4 Prüfvektoren addiert werden, um den Orginalen-Vektor zu erhalten.
+$H=3$\\
+Es müssen mindestens 3 Prüfvektoren addiert werden, um den 0-Vektor zu erhalten.
 
 \paragraph{Ist der Code dicht gepackt?}\mbox{}\\
 Der Code ist nicht dichtgepackt, da $H=4$ ist. Damit liegt mindestens 1 Codewort (CW) ausserhalb \textit{einer Korrigierkugel}.
 
-\subsubsection{Prüfung FS2015}
+\subsubsection{C}
 Gegeben ist die folgende Prüfmatrix eines  Hamming Blockcode
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.7\linewidth]{./02-kanalcodierung/fs2015_1}
+    \includegraphics[width=.9\linewidth]{./02-kanalcodierung/fs2015_1}
     \vspace{-8pt}
 \end{center}
 
@@ -90,7 +90,7 @@ Syndrom $(0011)^T$\\
 Was würde bei einer Vorwärtskorrektur passieren?\\
 \textit{x6 würde fälschlicherweise Korrigiert.}
 
-\subsubsection{Prüfung HS2009}
+\subsubsection{D}
 Gegeben sind die folgenden Fehlersyndrome für einen einzigen Bitfehler an der jeweiligen Stelle xi eines systematischen Blockkodes:\\
 $Z(x1)=[111], Z(x2)=[110], Z(x3)=[101], Z(x4)=[011], Z(x5)=[100], Z(x6)=[010], Z(x6)=[001]$\\
 
@@ -104,13 +104,13 @@ $\begin{matrix}
 
 Wie gross ist die Hammingdistanz des Codes?\\
 $h=3$\\
-% TODO: Hamming-Distanz = Anzahl Kontrollstellen?
+Hamming-Distanz = kleinste Distanz (unterschied der Bits) zwischen zwei Codeworten\\
 
 Ermittelten sie für die unten aufgeführten Nachrichtenwörter die vollständigen Codewörter\\
 $NW1 = x6 = 0001$ $\textcolor{red}{0}$ $\textcolor{red}{1}$ $\textcolor{red}{1}$\\
 $NW2 = x7 = 1010$ $\textcolor{red}{0}$ $\textcolor{red}{1}$ $\textcolor{red}{0}$
 
-\subsubsection{Prüfung FS2009}
+\subsubsection{E}
 Gegeben ist die folgende Generatormatrix.
 \begin{center}
     \vspace{-8pt}
@@ -124,7 +124,7 @@ $k=4, m=11$\\
 Sie empfangen die folgenden Codewörter.
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.8\linewidth]{./02-kanalcodierung/fs2009_3}
+    \includegraphics[width=.9\linewidth]{./02-kanalcodierung/fs2009_3}
     \vspace{-8pt}
 \end{center}
 
@@ -146,7 +146,7 @@ Konstruieren Sie einen (reduzierten) Hamming-Code (Generatormatrix) für den Fal
 \textit{Reduzierter Code: Weil die Anzahl der Nachrichtenstellen nicht vollständig ausgenutzt werden.}
 
 \subsection{Zyklischer Code}
-\subsubsection{Nachprüfung HS2020}
+\subsubsection{A}
 Gegeben ist folgendes Generatorpolynom:
 $p(x)=x^5+x^3+x^2+1$
 
@@ -156,7 +156,7 @@ Grad 5 $\rightarrow$ 5 Kontrollstellen
 \paragraph{Schieberegister}\mbox{}\\
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.8\linewidth]{./02-kanalcodierung/schieberegister}
+    \includegraphics[width=.9\linewidth]{./02-kanalcodierung/schieberegister}
     \vspace{-8pt}
 \end{center}
 
@@ -164,30 +164,26 @@ Grad 5 $\rightarrow$ 5 Kontrollstellen
 Prüfmatrix aus Schieberegister ablesen (101101).
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.8\linewidth]{./02-kanalcodierung/codewort}
+    \includegraphics[width=.9\linewidth]{./02-kanalcodierung/codewort}
     \vspace{-8pt}
 \end{center}
 
 \paragraph{Fehlersyndrom für Stelle $x^5$ mit Polynomdivison ermitteln}\mbox{}\\
 $x^5:x^3+x^2+1 \rightarrow Rest: x+1$
 
-\subsubsection{Prüfung FS2017}
+\subsubsection{B}
 Gegeben ist das folgende Generatorpolynom:\\
 $g(x)=x^4+x^3+x^2+1$
 
-\paragraph{Ist das Generatorpolynom irreduzibel?}\mbox{}\\
-\begin{center}
+\paragraph{Ist das Generatorpolynom irreduzibel?}
     \vspace{-8pt}
-    \includegraphics[width=.8\linewidth]{./02-kanalcodierung/fs2017}
+    \includegraphics[width=.9\linewidth]{./02-kanalcodierung/fs2017}
     \vspace{-8pt}
-\end{center}
 
 \paragraph{Ermitteln Sie die Kontrollstellen für die Nachricht m=100}\mbox{}\\
-\begin{center}
     \vspace{-8pt}
     \includegraphics[width=.5\linewidth]{./02-kanalcodierung/fs2017_1}
     \vspace{-8pt}
-\end{center}
 
 \paragraph{Ermitteln Sie die Zyklusfolge des Polynoms}\mbox{}\\
 $A4+A3+A2=1$\\
@@ -200,14 +196,16 @@ $A6= A3 + A2 + A$\\
 $A7= A4 + A3 + A2 = A3 + A2 + 1 + A3 + A2 = 1$\\
 Somit ergibt sich der Zyklus zu: 0001, 0010, 0100, 1000, 1101, 1110, 0001
 
-\subsubsection{Prüfung FS2015}
+\columnbreak
+
+\subsubsection{C}
 Gegeben ist das folgende Generatorpolynom p:\\
 $p(x)=1+x^2+x^6+x^{10}+x^{14}$\\
 
 Prüfen Sie durch Rechnung, ob das Polynom irreduzibel ist.
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.5\linewidth]{./02-kanalcodierung/fs2015_2}
+    \includegraphics[width=.9\linewidth]{./02-kanalcodierung/fs2015_2}
     \vspace{-8pt}
 \end{center}
 
@@ -218,7 +216,7 @@ Wie gross sind in diesem Fall
     \item Codewortlänge (n): $n=2^{14}-1=16383$
 \end{itemize}
 
-\subsubsection{Prüfung HS2009}
+\subsubsection{D}
 Gegeben ist das folgende Generatorpolynome p\\
 $p(x)=1+x^2+x^4+x^5$\\
 
@@ -230,11 +228,13 @@ d.h. $h=4,k=5,n=2^4-1=15 \rightarrow m=10$\\
 Prüfen sie, ob das Generatorpolynom $p_1(x)=1+x+x^4+x^5$ das folgende Codewort gültig ist.\\
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.5\linewidth]{./02-kanalcodierung/hs2009_2}
+    \includegraphics[width=.9\linewidth]{./02-kanalcodierung/hs2009_2}
     \vspace{-8pt}
 \end{center}
 
-\subsubsection{Prüfung FS2009}
+\columnbreak
+
+\subsubsection{E}
 Gegeben sind die folgenden Generatorpolynome p1 und p2:\\
 $p_1(x)=1+x+x4$\\
 $p_2(x)=1+x2+x4+x5$\\
@@ -250,7 +250,7 @@ $p_2: k=5, m=10, h=4$\\
 Geben Sie für das Generatorpolynom p1(x)=1+x+x4 das rückgekoppelte Schieberegister zur Ermittlung der Kontrollstellen an.
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.7\linewidth]{./02-kanalcodierung/fs2009_5}
+    \includegraphics[width=.9\linewidth]{./02-kanalcodierung/fs2009_5}
     \vspace{-8pt}
 \end{center}
 
@@ -261,15 +261,17 @@ Geben Sie mit Hilfe des Schieberegisters an, ob das folgende Codewort gültig is
     \vspace{-8pt}
 \end{center}
 
+\columnbreak
+
 \subsection{Faltungscode}
-\subsubsection{Nachprüfung HS2020}\mbox{}\\
+\subsubsection{A}\mbox{}\\
 \begin{center}
     \vspace{-8pt}
     \includegraphics[width=.8\linewidth]{./02-kanalcodierung/faltungscode}
     \vspace{-8pt}
 \end{center}
 
-\subsubsection{Prüfung FS2017}
+\subsubsection{B}
 Gegeben ist der folgende Faltungscodierer
 \begin{center}
     \vspace{-8pt}
@@ -298,35 +300,57 @@ $g_2=x^3+x^2+1$
 \paragraph{Bestimmen Sie seine Coderate}\mbox{}\\
 $\frac{Anzahl Ausgangsbits}{Anzahl Eingangsbits} = \frac{8}{4}=2$\\
 
-\subsubsection{Prüfung HS2016}
+\columnbreak
+
+\subsubsection{C}
 Gegeben seien die folgenden Impulsantworten eines (3,1,2)-Faltungscodierers:\\
 ${g_1}={1,1,0}, {g_2}={1,0,1} \& {g_3}={1,1,1}$\\
 
-\paragraph{Zeichnen Sie die Encoder Schaltung}\mbox{}\\
+\textbf{Zeichnen Sie die Encoder Schaltung}\\
 \begin{center}
     \vspace{-8pt}
     \includegraphics[width=.8\linewidth]{./02-kanalcodierung/hs2016}
     \vspace{-8pt}
 \end{center}
 
-\paragraph{Wie viele Tail-Bits müssen einer Nachrichtenfolge angefügt werden?}\mbox{}\\
-2 TAIL-BITS
+\textbf{Wie viele Tail-Bits müssen einer Nachrichtenfolge angefügt werden?}\\
+2 Tail-Bits (Anzahl Speicherstellen)\\
 
-\paragraph{Geben Sie das Encoder-Zustandsdiagramm an}\mbox{}\\
+\textbf{Geben Sie das Encoder-Zustandsdiagramm an}\\
+Anzahl Zustände: $2^{Anzahl Kästchen/ Speicherstellen}$\\
+Anzahl Ausgangsbits hängt vom Generatorpolynom ab (hier 3 Ausgangsbits)\\
+Nun bestimmen wir den nächsten ZUstand durch Schieben der Schieberegister: Es wird das Eingangsbit und das erste Schieberegisterbit übernommen (zweite und dritte Spalte).
+\begin{center}
+    \vspace{-8pt}
+    \includegraphics[width=.8\linewidth]{./02-kanalcodierung/hs2016_2}
+    \vspace{-8pt}
+\end{center}
+
+Ausgangsbits:
+\begin{itemize}
+    \item 1. Ausgangsbit: (Eingangsbit + 2. Schieberegisterbit)mod2
+    \item 1. Ausgangsbit: (Eingangsbit + 1. Schieberegisterbit + 2. Schieberegisterbit)mod2
+\end{itemize}
+
 \begin{center}
     \vspace{-8pt}
     \includegraphics[width=.8\linewidth]{./02-kanalcodierung/hs2016_1}
     \vspace{-8pt}
 \end{center}
 
-\paragraph{Liegt ein katastrophaler Code vor (Begründung)?}\mbox{}\\
+\textbf{Liegt ein katastrophaler Code vor (Begründung)?}\\
 Nein, da es keine Zyklen ohne Gewichtszunahme gibt.
 
 \paragraph{Bestimmen sie die (Block)-Coderate}\mbox{}\\
-$B=Eingabebits$\\
-$R=\frac{B}{N} = \frac{B}{3*(B+2)}$
+B=Eingabebits\\
+Encodiergedächtnis=Anzahl Speicherstellen (m=2)\\
+$R=\frac{Eingabebits}{Ausgabebits*(Eingabebits+Speicherstellen)}$\\
+$R=\frac{Codierte Bits}{Gesendete Bits}=\frac{B}{|Anzahl gesendete|*B+|Tailbits|}$\\
+$R=\frac{B}{N} = \frac{B}{3*(B+2)}=\frac{1}{3*(1+2)}=0.111$
 
-\subsubsection{Prüfung HS2009}
+\columnbreak
+
+\subsubsection{D}
 Gegeben seien die folgenden Impulsantworten eines Faltungscodierers mit einem Eingang:\\
 ${g1}={1,1,0}$ und ${g2}={1,1,1}$\\
 
@@ -339,6 +363,7 @@ Zeichen Sie die Encoder Schaltung.
 
 Wie viele Tail-Bits müssen einer Nachrichtenfolge angefügt werden?\\
 \textit{2 Tailbits}\\
+Tailbits = Anzahl Speicherstellen oder Anzahl der Hops zurück zu Anfangszustand in Diagramm\\
 
 Geben Sie das Encoder-Zustandsdiagramm an.\\
 \begin{center}
@@ -370,6 +395,8 @@ Zeichnen Sie die Encoder-Schaltung.
 Wie viele Tail-Bits müssen einer Nachrichtenfolge angefügt werden?\\
 \textit{2 Tail-Bits}\\
 
+\columnbreak
+
 Geben Sie das Encoder-Zustandsdiagramm an.
 \begin{center}
     \vspace{-8pt}
@@ -384,13 +411,13 @@ Ermitteln Sie für die Nachrichtenfolge {u[n]}={1,1,1,0,1,1} die Ausgangscodefol
 ${v[n]}={1,1,0,1,0,0,1,1,1,0,0,1,Tailbits,1,1,0,1}$\\
 
 Bestimmen sie für das obige Beispiel die (Block-)Coderate.\\
-$R=b/n$\\
+$R=\frac{b}{n}=\frac{Eingabebits}{Ausgabebits*(Eingabebits+Speicherstellen)}$\\
 $b=Eingabebits=6$\\
 $n=Ausgabebits=6*2+2*2 (Tail-Bits)$\\
 $R=6/16=0.375$
 
 \subsection{Kanalmatrix}
-\subsubsection{Prüfung HS2016}
+\subsubsection{A}
 Die Eigenschaften eines Kanals seien durch die folgende Kanalmatrix beschrieben: 
 
 $P(Y|X) = \begin{matrix}
@@ -406,7 +433,7 @@ $P(Y|X) = \begin{matrix}
     0.3 & 0.1 & \textcolor{red}{0.6}
 \end{matrix}$
 
-\paragraph{}\mbox{Maximum Likelihood}\\
+\paragraph{Maximum Likelihood}\mbox{}\\
 Berechnen Sie die Restfehlerwahrscheinlichkeit für die nach dem Maximum Li-kelyhood-Verfahren gefundene Entscheidungszuordnung\\
 Gehen Sie davon aus, dass alle Eingangszeichen gleichwahrscheinlich auftreten.\\
 
@@ -417,7 +444,9 @@ $x1 = 500$\\
 $x2 = 2500$\\
 $x3 = 7000$\\
 
-Lässt sich mit dieser zusätzlichen Information eine Entscheidungszuordnung finden, die besser ist als die nach dem Maximum Likelyhood-Verfahren gefunde-ne? Begründen Sie Ihren Entscheid.
+\columnbreak
+
+Lässt sich mit dieser zusätzlichen Information eine Entscheidungszuordnung finden, die besser ist als die nach dem Maximum Likelyhood-Verfahren gefundene?\\
 $p(x1) = 0.05$\\
 $p(x2) = 0.25$\\
 $p(x3) = 0.70$\\
@@ -435,7 +464,7 @@ ist kleiner als 0.5 und auch kleiner als wenn Restfehlerwahrscheinlichkeit mit d
 $1 - (0.05*0.4 + 0.05*0.5 + 0.7*0.6) = 0.535$
 
 \subsection{Kanal}
-\subsubsection{Prüfung FS2015}
+\subsubsection{A}
 Messungen an einem symmetrischen Kanal, ergeben die unten angegebenen Auftrittswahrscheinlichkeiten der Zeichen am Kanaleingang respektive am Kanalausgang.\\
 \begin{center}
     \vspace{-8pt}
@@ -464,8 +493,10 @@ $=0.99$\\
 
 Der Kanal ist nicht fehlerfrei!
 
+\columnbreak
+
 \subsection{Transinformation}
-\subsubsection{Prüfung FS2009}
+\subsubsection{A}
 Sie messen einen binären Kanal aus und erhalten folgende Ergebnisse:\\
 
 \begin{center}
@@ -501,7 +532,7 @@ Ausgang: $H(Y)=-(0.791*ld(0.791)+0.209*ld(0.209))=0.7395$
 \paragraph{Wie gross ist die Transinformation}\mbox{}\\
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.8\linewidth]{./02-kanalcodierung/fs2009}
+    \includegraphics[width=1.0\linewidth]{./02-kanalcodierung/fs2009}
     \vspace{-8pt}
 \end{center}
 
