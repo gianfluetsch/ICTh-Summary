@@ -11,8 +11,10 @@ Aus sicherer Quelle wissen Sie, dass eine der beiden Primzahlen 17 ist. Entschl�
 Gegeben: $c=8, e=13, n=323, p=17$\\
 $solve(323=17*x,x) \rightarrow q=19$\\
 $\phi(n) = (p-1)*(q-1) = 16*18=288$\\
-$d=\frac{2*\phi(n)+1}{e}=\frac{2*288+1}{13}$
-% TODO: ???
+$d=\frac{2*\phi(n)+1}{e}=\frac{2*288+1}{13}$\\
+$d=rsa\_ereuk(17,288) \rightarrow d=17$\\
+$rsa\_dec(8,13,323) \rightarrow m=179$\\
+$\rightarrow$ d negativ $\rightarrow$ d=Wert in obiger Spalte nehmen
 
 \subsubsection{B}
 Mit RSA-verschlüsselte Nachricht c=4 abgefangen und kennen öffentlichen Schlüssel des Empfängers (e=13, n=143).
@@ -20,8 +22,9 @@ Beide Primzahlen (p \& q) sind grösser als 10. Entschlüsseln Sie die Nachricht
 Gegeben: $c=8, e=13, n=143$\\
 $p=11, q=13 \rightarrow 11*13 = 143$\\
 $\phi(n) = (p-1)*(q-1) = 10*12=120$\\
-$d=\frac{2*\phi(n)+1}{e}=\frac{2*288+1}{13}$
-% TODO: ???
+$d=\frac{2*\phi(n)+1}{e}=\frac{2*288+1}{13}$\\
+$d=rsa\_ereuk(13,120) \rightarrow d=37$\\
+$rsa\_dec(4,13,143) \rightarrow m=108$
 
 \subsubsection{C}
 Es wird ein asymmetrisches Verfahren (RSA) verwendet. Wie viele verschiedene Schlüsselpaare müssen erzeugt werden, wenn in einer Gruppe von 25 Teilnehmern. jeder mit jedem vertraulich kommunizieren möchte?\\
@@ -50,9 +53,11 @@ Es muss gehlten: $e*dmod\phi(n)=1$\\
 
 \begin{center}
     \vspace{-8pt}
-    \includegraphics[width=.5\linewidth]{./01-quellencodierung/fs2017_4}
+    \includegraphics[width=.7\linewidth]{./01-quellencodierung/fs2017_4}
     \vspace{-8pt}
 \end{center}
+
+$rsa\_euklid(17,40)$\\
 
 Daraus folgt, 33 ist die Inverse zu 17 bzgl. der mod40 Rechnung. D.h. der Schlüssel zum Entschlüsseln ist 33.
 
@@ -76,6 +81,8 @@ Wird bei diesem Verfahren jedes Quellzeichen einzeln Verschlüsselt oder werden 
 Beschreiben Sie, wie sie in diesem Fall eine einfache Kryptoanalyse machen können und was sie dazu brauchen?\\
 \textit{Bei einer Cesar-Verschlüsselung werden die Häufigkeiten der Quellzeichen nicht verwürfelt. Ist die Zielsprache bekannt ist auch das häufigste Zeichen der Spra-che bekannt. Ist der Erhaltene Code gross genug kann mit einer einfachen Häu-figkeitsanalyse der Schlüssel ermittelt werden.}\\
 
+\columnbreak
+
 Gegeben seien die beiden Primzahlen 15 und 11. Als öffentlichen Schlüssel wählen Sie die Primzahl 17.\\
 Berechnen sie den inversen, privaten Schlüssel und machen sie alle Zwischenschritte deutlich.\\
 $n = 143 \rightarrow \phi(n)=12*10=120$\\
@@ -88,12 +95,16 @@ $1=-17*7mod120 + 120 * 7$\\
 $1=103*7mod120$\\
 $7^{-1}mod120=113$\\
 
+$rsa\_euklid(17,120) \rightarrow d=113$\\
+
 Daraus folgt, 113 ist der Inverse Schlüssel.\\
 
 Verschlüsseln Sie die Zahl 3 mit dem öffentlichen Schlüssel 17, mache sie die Rechenschritte deutlich.\\
 $=3^{17}mod143$\\
 $=3^{10}*3^7mod143$\\
 $=9$\\
+
+$rsa\_enc(3,17,143) \rightarrow 9$\\
 
 Welchen Schlüssel verwenden sie, um eine Nachricht zu:\\
 \begin{itemize}
